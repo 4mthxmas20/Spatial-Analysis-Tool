@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  NetBeans project descriptor for a Maven project.
+  Open in NetBeans via: File → Open Project → select HKSpatialAnalysis folder.
+  NetBeans will detect pom.xml automatically.
+-->
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.maven</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/maven-project/2">
+            <name>HKSpatialAnalysis</name>
+        </data>
+    </configuration>
+</project>

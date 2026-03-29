@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*** GENERATED FROM project.xml - DO NOT EDIT  ***
+***         EDIT ../build.xml INSTEAD         ***
+-->
+<project name="HKSpatialAnalysis-impl" basedir="..">
+    <property file="nbproject/private/config.properties"/>
+    <property file="nbproject/private/${config.name}.properties"/>
+    <property file="nbproject/private/private.properties"/>
+    <property file="nbproject/${config.name}.properties"/>
+    <property file="nbproject/project.properties"/>
+
+    <target name="-pre-init"/>
+    <target name="-post-init"/>
+
+    <target name="-init-private" depends="-pre-init">
+        <property name="build.dir" value="build"/>
+        <property name="dist.dir" value="dist"/>
+        <property name="src.dir" value="src"/>
+        <property name="main.class" value="hkspatialanalysis.Main"/>
+        <property name="javac.source" value="1.8"/>
+        <property name="javac.target" value="1.8"/>
+        <property name="source.encoding" value="UTF-8"/>
+        <property name="build.classes.dir" value="${build.dir}/classes"/>
+        <property name="dist.jar" value="${dist.dir}/HKSpatialAnalysis.jar"/>
+    </target>
+
+    <target name="-init-macrodef-javac">
+        <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">
+            <attribute name="srcdir" default="${src.dir}"/>
+            <attribute name="destdir" default="${build.classes.dir}"/>
+            <attribute name="classpath" default=""/>
+            <sequential>
+                <javac srcdir="@{srcdir}" destdir="@{destdir}" classpath="@{classpath}"
+                       source="${javac.source}" target="${javac.target}"
+                       encoding="${source.encoding}" includeantruntime="false"/>
+            </sequential>
+        </macrodef>
+    </target>
+
+    <target name="init" depends="-init-private,-init-macrodef-javac,-post-init"/>
+
+    <target name="clean" depends="init">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="-do-compile" depends="init">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac:javac xmlns:javac="http://www.netbeans.org/ns/j2se-project/3"/>
+    </target>
+
+    <target name="compile" depends="-do-compile"/>
+
+    <target name="-do-jar" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.jar}" manifest="manifest.mf">
+            <fileset dir="${build.classes.dir}"/>
+        </jar>
+    </target>
+
+    <target name="jar" depends="-do-jar"/>
+
+    <target name="run" depends="jar">
+        <java jar="${dist.jar}" fork="true"/>
+    </target>
+
+    <target name="clean-and-build" depends="clean,jar"/>
+    <target name="default" depends="jar"/>
+</project>
